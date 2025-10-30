@@ -21,14 +21,42 @@ function ensureModal() {
     <button class="welcome-modal__close" type="button" data-welcome-close aria-label="Закрити">✕</button>
   </header>
   <div class="welcome-modal__content">
-  <p>Це інтерактивний сайт Артема Подоби, де через запити до нейромережі можна керувати блоками сторінки, відкривати форми й отримувати пояснення про проєкти.</p>
-    <ul class="welcome-modal__list">
-      <li><strong>AI Console</strong>: приймає команди, відкриває панелі, відповідає на питання.</li>
-      <li><strong>AI Hub</strong>: показує живий вивід, стек, командний список та журнал дій.</li>
-      <li><strong>Проекти</strong>: фільтрація за технологіями, запити через /projects.</li>
-      <li><strong>Контакти</strong>: контактна форма відкривається на вимогу прямо в AI Hub.</li>
-    </ul>
-    <p>Щоб швидко побачити ці можливості, натисніть кнопку нижче або використайте команду <code>/help</code> у консолі.</p>
+    <p>Це інтерактивний сайт-портфоліо з AI Console. Введи команди на кшталт <code>/help</code>, <code>/stack</code>, <code>/projects react</code> — і побачиш миттєву реакцію інтерфейсу.</p>
+
+    <div class="welcome-modal__doc" role="document" aria-label="Документація">
+      <h4 style="margin:.1rem 0 .6rem">Опис роботи</h4>
+      <ul class="welcome-modal__list">
+        <li><strong>Мета:</strong> показати взаємодію користувача через запити до нейромережі та рендер дій на сторінці.</li>
+        <li><strong>Концепція:</strong> мінімалістичний інтерфейс з AI Console, що відкриває панелі, фільтрує проєкти, показує контакти й журнал.</li>
+        <li><strong>Як працює:</strong> поле чату приймає команди → парсер визначає намір → AI Hub відображає Live/Стек/Команди/Журнал; список проєктів фільтрується миттєво.</li>
+        <li><strong>Зображення:</strong> превʼю підключені статично як <code>&lt;img src="/projectImg/..."&gt;</code> з папки <code>public/</code>.</li>
+      </ul>
+
+      <h4 style="margin:1rem 0 .5rem">Використані технології</h4>
+      <ul class="welcome-modal__list">
+        <li>HTML5: семантика, ARIA.</li>
+        <li>CSS3: Variables, Grid/Flex, адаптивність.</li>
+        <li>JavaScript ES Modules: рендер і фільтр проєктів, керування панелями.</li>
+        <li>Vite: dev server + HMR, білд, <code>public/</code> для статичних ассетів.</li>
+      </ul>
+
+      <h4 style="margin:1rem 0 .5rem">Архітектура модулів</h4>
+      <ul class="welcome-modal__list">
+        <li><code>main.js</code> — ініціалізація, обробка команд AI Console.</li>
+        <li><code>projectsRender.js</code> — рендер/фільтр проєктів.</li>
+        <li><code>infoBlocks.js</code>, <code>stackRender.js</code>, <code>socialIcons.js</code> — UI підпанелі.</li>
+      </ul>
+
+      <h4 style="margin:1rem 0 .5rem">Швидкий старт</h4>
+      <ul class="welcome-modal__list">
+        <li>Відкрийте чат унизу й надішли <code>/help</code>.</li>
+        <li>Спробуйте <code>/projects civic</code> щоб відфільтрувати список.</li>
+        <li>Команда <code>/contact</code> відкриє контакти.</li>
+        <li>Якщо написати в чат: <code>"Приховай форму/команди/журнал/живий вивід"</code>, то елементи зникнуть, як і з'являть при написанні у чат: <code>"Покажи форму/команди/журнал/живий вивід"</code> (взаємодія відбувається у AI Hub)</li>
+      </ul>
+    </div>
+
+    <p style="opacity:.85">Підказка: команди працюють і з клавіатури. Enter — надіслати, Shift+Enter — новий рядок.</p>
   </div>
   <footer class="welcome-modal__footer">
     <button class="welcome-modal__cta" type="button" data-welcome-close>Зрозуміло, перейти до сайту</button>

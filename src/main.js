@@ -222,10 +222,15 @@ register('/projects', {
 					filterAndRenderProjects(filter);
 					const count = (window.__PROJECTS||[]).filter(p => {
 						const f = filter.toLowerCase();
-						return p.tech.some(t=>t.toLowerCase().includes(f)) ||
-							(p.tags && p.tags.some(tag=>tag.toLowerCase().includes(f))) ||
-							p.title.toLowerCase().includes(f) ||
-							(p.short||'').toLowerCase().includes(f);
+						const inTech = Array.isArray(p.tech) && p.tech.some(t => String(t).toLowerCase().includes(f));
+						const inTags = Array.isArray(p.tags) && p.tags.some(tag => String(tag).toLowerCase().includes(f));
+						const inTitle = String(p.title||'').toLowerCase().includes(f);
+						let inShort = false;
+						if (typeof p.short === 'string') inShort = p.short.toLowerCase().includes(f);
+						else if (p.short && (p.short.uk || p.short.en)) {
+							inShort = String(p.short.uk||'').toLowerCase().includes(f) || String(p.short.en||'').toLowerCase().includes(f);
+						}
+						return inTech || inTags || inTitle || inShort;
 					}).length;
 					pushMessage({ role:'bot', html:`<p>Знайдено: <strong>${count}</strong>. Фільтр: <code>${escapeHtml(filter)}</code></p>` });
 				} else {
