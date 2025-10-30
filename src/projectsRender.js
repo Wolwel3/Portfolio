@@ -15,14 +15,15 @@
  */
 import { PROJECTS, findProjects } from './projectsData.js';
 import { getLang } from './core/i18n.js';
-import { assetUrl } from './assetUrl.js';
+// assetUrl removed for robustness across different base paths; use relative paths
 
 function projectCardHTML(p){
   const techList = p.tech.slice(0,6).map(t=>`<li>${t}</li>`).join('');
   const tags = p.tags?.length ? `<ul class="project-card__tags">${p.tags.slice(0,4).map(t=>`<li>${t}</li>`).join('')}</ul>` : '';
   const links = p.links ? Object.entries(p.links).filter(([,v])=>!!v).map(([k,v])=>`<a href="${v}" target="_blank" rel="noopener" class="project-link project-link--${k}">${k}</a>`).join('') : '';
   const titleHTML = p.links?.live ? `<a class="project-card__title-link" href="${p.links.live}" target="_blank" rel="noopener" title="Відкрити live">${p.title}</a>` : p.title;
-  const imgSrc = p.thumb ? assetUrl(p.thumb) : null;
+  // Build a relative path to work on any host (root or subpath). Files come from Vite `public/`.
+  const imgSrc = p.thumb ? String(p.thumb).replace(/^\.?\//,'').replace(/^public\//,'') : null;
   const lang = getLang();
   let short = '';
   if (typeof p.short === 'string') short = p.short;
