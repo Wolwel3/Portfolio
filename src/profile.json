@@ -1,0 +1,39 @@
+{
+  "name": "Артем Подоба",
+  "shortName": "Артем",
+  "role": "Front-end Developer",
+  "tagline": "Пишу швидкі інтерфейси та інтегрую AI там, де це прискорює роботу",
+  "location": "Вінниця, Україна",
+  "email": "wwoollwweell@gmail.com",
+  "contacts": {
+    "email": "wwoollwweell@gmail.com",
+    "github": "Wolwel3",
+    "linkedin": "",
+    "telegram": "Wolwel2",
+    "website": "",
+    "phone": "+380635815484"
+  },
+  "principles": [
+    "Чистий інтерфейс → швидше сприйняття",
+    "AI як інструмент, не заміна мисленню",
+    "Ітеративність та вимірність змін"
+  ],
+  "skills": {
+    "ui": ["Семантика HTML", "Адаптивність", "ARIA та доступність"],
+    "architecture": ["Компонентний підхід", "Чисті контракти", "Модульність"],
+    "ai": ["LLM інтеграції", "Prompt design", "Обробка контексту"],
+    "performance": ["Оптимізація білду", "Кешування", "Lighthouse аналіз"],
+    "tooling": ["CI/CD", "Git flow", "Автоматизація"],
+    "soft": ["Комунікація", "Наставництво", "Прозорість"]
+  },
+  "achievements": [
+    { "label": "+40%", "detail": "Прискорення збірки після оптимізації" },
+    { "label": "-25%", "detail": "Зменшення часу завантаження сторінки" }
+  ],
+  "learning": ["GraphQL production patterns", "Edge / CDN оптимізація", "Advanced Prompting"],
+  "aiExperience": [
+    "Інтеграція OpenAI / OpenRouter для команд у чаті",
+    "Класифікація контенту відповіді за категоріями",
+    "План: структурований модульний вивід"
+  ]
+}
